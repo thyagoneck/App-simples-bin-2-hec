@@ -1,49 +1,20 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, Button, View } from "react-native";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./src/screens/HomeScreen";
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  const [number, setNumber] = useState(0);
-  const [numberBinary, setBinary] = useState(0);
-
-  const convertNumberToBinary = value => {
-    return (value >>> 0).toString(2);
-  };
-
   return (
-    <View style={styles.container}>
-      <Text>Digite um número: </Text>
-      <TextInput
-        style={styles.textInputStyle}
-        autoCapitalize="none"
-        keyboardType="numeric"
-        onChangeText={input => {
-          const sanitizedNumber = input.replace(/([^0-9])/g, "");
-          setNumber(sanitizedNumber);
-          const binaryNumber = convertNumberToBinary(sanitizedNumber);
-          setBinary(binaryNumber);
-        }}
-        value={number.toString()}
-      />
-      <Text>{numberBinary}</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Conversor de decimal para binário" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ffa000",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  textInputStyle: {
-    height: 80,
-    width: 200,
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 5,
-    marginTop: 10,
-    fontSize: 50,
-    textAlign: "center"
-  }
-});
