@@ -1,6 +1,6 @@
 # Descrição
 
-App simples para converter binário para hexadecimal.
+App simples para converter binário para decimal.
 
 # Packages
 
