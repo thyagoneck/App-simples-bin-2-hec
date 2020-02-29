@@ -1,6 +1,6 @@
 # Descrição
 
-App simples para converter binário para decimal.
+App simples para converter binário para decimal utilizando React Native.
 
 # Packages
 
