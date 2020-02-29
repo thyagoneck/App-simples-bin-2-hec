@@ -17,7 +17,6 @@ export default function App() {
         style={styles.textInputStyle}
         autoCapitalize="none"
         keyboardType="numeric"
-        maxLength={8}
         value={enteredNumber.toString()}
         onChangeText={input => {
           if (/[2-9]/g.test(input)) {
