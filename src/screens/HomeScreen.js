@@ -16,13 +16,14 @@ export default function App() {
         style={styles.textInputStyle}
         autoCapitalize="none"
         keyboardType="numeric"
+        maxLength={8}
+        value={number.toString()}
         onChangeText={input => {
           const sanitizedNumber = input.replace(/([^0-9])/g, "");
           setNumber(sanitizedNumber);
           const binaryNumber = convertNumberToBinary(sanitizedNumber);
           setBinary(binaryNumber);
         }}
-        value={number.toString()}
       />
       <Text>{numberBinary}</Text>
     </View>
