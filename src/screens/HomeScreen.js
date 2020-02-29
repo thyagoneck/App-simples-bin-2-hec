@@ -20,7 +20,11 @@ export default function App() {
         maxLength={8}
         value={enteredNumber.toString()}
         onChangeText={input => {
-          const sanitizedNumber = input.replace(/([^0-9])/g, "");
+          if (/[2-9]/g.test(input)) {
+            alert("Número inválido.\nNúmeros aceitos: 0 ou 1");
+            return;
+          }
+          const sanitizedNumber = input.replace(/([^0-1])/g, "");
           setEnteredNumber(sanitizedNumber);
           const binaryNumber = convertNumberToBinary(sanitizedNumber);
           setBinary(binaryNumber);
