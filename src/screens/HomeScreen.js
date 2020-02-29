@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Digite um número: </Text>
+      <Text style={styles.titleStyle}>Digite um número: </Text>
       <TextInput
         style={styles.textInputStyle}
         autoCapitalize="none"
@@ -29,7 +29,7 @@ export default function App() {
           setBinary(binaryNumber);
         }}
       />
-      <Text>{binary}</Text>
+      <Text style={styles.resultStyle}>{binary}</Text>
     </View>
   );
 }
@@ -38,8 +38,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ffa000",
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: "center"
+  },
+  titleStyle: {
+    marginTop: 40,
+    fontSize: 30
   },
   textInputStyle: {
     height: 80,
@@ -47,8 +50,12 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderWidth: 1,
     borderRadius: 5,
-    marginTop: 10,
+    marginTop: 20,
     fontSize: 50,
     textAlign: "center"
+  },
+  resultStyle: {
+    fontSize: 50,
+    fontWeight: "bold"
   }
 });
