@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
-  const [number, setNumber] = useState(0);
-  const [numberBinary, setBinary] = useState(0);
+  const [enteredNumber, setEnteredNumber] = useState(0);
+  const [binary, setBinary] = useState(0);
 
   const convertNumberToBinary = value => {
-    return (value >>> 0).toString(2);
+    const decimalToBinary = parseInt(value, 2);
+    return isNaN(decimalToBinary) ? 0 : decimalToBinary;
   };
 
   return (
@@ -17,15 +18,15 @@ export default function App() {
         autoCapitalize="none"
         keyboardType="numeric"
         maxLength={8}
-        value={number.toString()}
+        value={enteredNumber.toString()}
         onChangeText={input => {
           const sanitizedNumber = input.replace(/([^0-9])/g, "");
-          setNumber(sanitizedNumber);
+          setEnteredNumber(sanitizedNumber);
           const binaryNumber = convertNumberToBinary(sanitizedNumber);
           setBinary(binaryNumber);
         }}
       />
-      <Text>{numberBinary}</Text>
+      <Text>{binary}</Text>
     </View>
   );
 }
